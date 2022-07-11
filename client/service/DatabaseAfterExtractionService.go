@@ -15,6 +15,7 @@ func NewDatabaseAfterExtractionService(taskRepository repository.ITaskRepository
 	return &databaseAfterExtractionService{taskRepository: taskRepository}
 }
 
+//Execute saves  an array of TykTaskConfig to the database
 func (d databaseAfterExtractionService) Execute(tykTaskConfigs []model2.TykTaskConfig) {
 
 	for i, tykTaskConfig := range tykTaskConfigs {

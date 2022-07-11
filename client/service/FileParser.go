@@ -17,6 +17,7 @@ func NewFileParser() *FileParser {
 	return &FileParser{}
 }
 
+//Parse returns an array of TykTaskConfig
 func (f FileParser) Parse() ([]model.TykTaskConfig, error) {
 	path := utils.GetDataPath()
 	file, err := os.Open(path)
@@ -30,7 +31,6 @@ func (f FileParser) Parse() ([]model.TykTaskConfig, error) {
 	// read the file line by line using scanner
 	scanner := bufio.NewScanner(file)
 
-	//var sliceOfByte [][]byte
 	var tykTaskConfig []model.TykTaskConfig
 
 	for scanner.Scan() {
@@ -39,7 +39,7 @@ func (f FileParser) Parse() ([]model.TykTaskConfig, error) {
 		//sliceOfByte = append(sliceOfByte, scanner.Bytes())
 		glg.Log(scanner.Text())
 		if err := json.Unmarshal(scanner.Bytes(), &tykConfig); err != nil {
-			log.Fatal(err)
+			glg.Error(err)
 		}
 		tykTaskConfig = append(tykTaskConfig, tykConfig)
 	}

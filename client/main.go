@@ -22,11 +22,8 @@ import (
 	"github.com/danieloluwadare/tyk-cocnurrent-parser-service/client/repository"
 	service2 "github.com/danieloluwadare/tyk-cocnurrent-parser-service/client/service"
 	utils2 "github.com/danieloluwadare/tyk-cocnurrent-parser-service/client/utils"
-	pb "github.com/danieloluwadare/tyk-cocnurrent-parser-service/gen/proto"
 	"github.com/joho/godotenv"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
-	"log"
 	"os"
 	"time"
 )
@@ -49,20 +46,11 @@ func main() {
 	//Migrate all models
 	utils2.InitiateModelMigration(dbConnection)
 
+	//Create context
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
 	inMemoryGrpcClient, conn := utils2.GetInMemoryGrpcClient()
-	taskRepository := repository.NewTaskRepository(dbConnection)
-
-	databaseAfterExtractionService := service2.NewDatabaseAfterExtractionService(taskRepository)
-	grpcAfterExtractionService := service2.NewGrpcAfterExtractionService(ctx, inMemoryGrpcClient)
-	fileParser := service2.NewFileParser()
-	//tykTaskConfigs, _ := fileParser.Parse()
-
-	initializer := service2.NewInitializer(fileParser, databaseAfterExtractionService, grpcAfterExtractionService)
-	initializer.Execute()
-
 	defer func(conn *grpc.ClientConn) {
 		err := conn.Close()
 		if err != nil {
@@ -70,24 +58,12 @@ func main() {
 		}
 	}(conn)
 
-	//getCLient()
+	taskRepository := repository.NewTaskRepository(dbConnection)
 
-}
-func getCLient() {
-	// Set up a connection to the server.
-	conn, err := grpc.Dial("localhost:8081", grpc.WithTransportCredentials(insecure.NewCredentials()))
-	if err != nil {
-		log.Fatalf("did not connect: %v", err)
-	}
-	defer conn.Close()
-	c := pb.NewInMemoryServiceClient(conn)
+	databaseAfterExtractionService := service2.NewDatabaseAfterExtractionService(taskRepository)
+	grpcAfterExtractionService := service2.NewGrpcAfterExtractionService(ctx, inMemoryGrpcClient)
 
-	// Contact the server and print out its response.
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
-	r, err := c.SaveRequest(ctx, &pb.TykServerRequest{Name: "Test Name", Description: "Alright"})
-	if err != nil {
-		log.Fatalf("could not greet: %v", err)
-	}
-	log.Printf("Greeting: %s", r.GetName())
+	fileParser := service2.NewFileParser()
+	initializer := service2.NewInitializer(fileParser, databaseAfterExtractionService, grpcAfterExtractionService)
+	initializer.Execute()
 }

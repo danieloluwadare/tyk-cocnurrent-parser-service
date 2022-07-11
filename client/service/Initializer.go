@@ -17,6 +17,8 @@ func NewInitializer(parser Parser, afterExtractions ...AfterExtraction) *Initial
 	return &Initializer{parser: parser, afterExtractions: initializedAfterExtractions}
 }
 
+//The Execute method initiates the entire process
+//by looping through the slice of  afterExtractions
 func (i Initializer) Execute() {
 	var wg sync.WaitGroup
 	tykTaskConfigs, _ := i.parser.Parse()

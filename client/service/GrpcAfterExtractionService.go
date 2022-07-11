@@ -5,7 +5,6 @@ import (
 	"github.com/danieloluwadare/tyk-cocnurrent-parser-service/client/model"
 	pb "github.com/danieloluwadare/tyk-cocnurrent-parser-service/gen/proto"
 	"github.com/kpango/glg"
-	"log"
 	"sync"
 )
 
@@ -18,15 +17,14 @@ func NewGrpcAfterExtractionService(ctx context.Context, inmemoryGrpcClient pb.In
 	return grpcAfterExtractionService{ctx: ctx, inmemoryGrpcClient: inmemoryGrpcClient}
 }
 
+//Execute invokes grpc service for  an array of TykTaskConfig
 func (g grpcAfterExtractionService) Execute(tykTaskConfigs []model.TykTaskConfig) {
-	//ctx, _ := context.WithTimeout(context.Background(), time.Second)
-	//defer cancel()
 	for i, tykTaskConfig := range tykTaskConfigs {
 		tykServerRequest := &pb.TykServerRequest{Name: tykTaskConfig.Name, Description: tykTaskConfig.Description}
 		glg.Log("calling grpc service for task ==>", tykTaskConfig, "with index =>", i)
 		r, err := g.inmemoryGrpcClient.SaveRequest(g.ctx, tykServerRequest)
 		if err != nil {
-			log.Fatalf("could not greet: %v", err)
+			glg.Error("could not greet: %v", err)
 		}
 		glg.Log("Response from Grpc:", r.GetName())
 	}
