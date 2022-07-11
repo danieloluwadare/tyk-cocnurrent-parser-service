@@ -45,11 +45,12 @@ func (f FileParser) Parse() ([]model.TykTaskConfig, error) {
 	}
 
 	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
+		glg.Error(err)
 	}
 
-	glg.Log(tykTaskConfig)
-	glg.Log(tykTaskConfig[0].Name)
+	if len(tykTaskConfig) == 0 {
+		glg.Error("FILE IS EMPTY")
+	}
 
 	return tykTaskConfig, nil
 }
