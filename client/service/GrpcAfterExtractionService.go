@@ -33,7 +33,6 @@ func (g grpcAfterExtractionService) Execute(tykTaskConfigs []model.TykTaskConfig
 }
 
 func (g grpcAfterExtractionService) ExecuteAsync(tykTaskConfigs []model.TykTaskConfig, wg *sync.WaitGroup) {
-	wg.Add(1)
 	g.Execute(tykTaskConfigs)
 	wg.Done()
 }

@@ -25,7 +25,6 @@ func (d databaseAfterExtractionService) Execute(tykTaskConfigs []model2.TykTaskC
 	}
 }
 func (d databaseAfterExtractionService) ExecuteAsync(tykTaskConfigs []model2.TykTaskConfig, wg *sync.WaitGroup) {
-	wg.Add(1)
 	d.Execute(tykTaskConfigs)
 	wg.Done()
 }

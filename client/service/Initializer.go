@@ -24,7 +24,8 @@ func (i Initializer) Execute() {
 	tykTaskConfigs, _ := i.parser.Parse()
 
 	for _, afterExtraction := range i.afterExtractions {
-		afterExtraction.ExecuteAsync(tykTaskConfigs, &wg)
+		wg.Add(1)
+		go afterExtraction.ExecuteAsync(tykTaskConfigs, &wg)
 	}
 	wg.Wait()
 }
