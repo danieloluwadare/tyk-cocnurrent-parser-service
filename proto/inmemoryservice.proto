@@ -5,7 +5,7 @@ option go_package = "./proto";
 package main;
 
 // The InMemory service definition.
-service InmemoryService {
+service InMemoryService {
   // Sends a greeting
   rpc SaveRequest (TykServerRequest) returns (TykServerResponse) {}
 }
