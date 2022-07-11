@@ -6,7 +6,6 @@ import (
 	"github.com/danieloluwadare/tyk-cocnurrent-parser-service/client/model"
 	"github.com/danieloluwadare/tyk-cocnurrent-parser-service/client/utils"
 	"github.com/kpango/glg"
-	"log"
 	"os"
 )
 
@@ -23,7 +22,7 @@ func (f FileParser) Parse() ([]model.TykTaskConfig, error) {
 	file, err := os.Open(path)
 
 	if err != nil {
-		log.Fatal(err)
+		glg.Error(err)
 	}
 	// remember to close the file at the end of the program
 	defer file.Close()
@@ -36,7 +35,6 @@ func (f FileParser) Parse() ([]model.TykTaskConfig, error) {
 	for scanner.Scan() {
 		// do something with a line
 		var tykConfig model.TykTaskConfig
-		//sliceOfByte = append(sliceOfByte, scanner.Bytes())
 		glg.Log(scanner.Text())
 		if err := json.Unmarshal(scanner.Bytes(), &tykConfig); err != nil {
 			glg.Error(err)
