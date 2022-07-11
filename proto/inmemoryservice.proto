@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "./proto";
+
+package main;
+
+// The InMemory service definition.
+service InmemoryService {
+  // Sends a greeting
+  rpc SaveRequest (TykServerRequest) returns (TykServerResponse) {}
+}
+
+// The request message containing the task's name and description
+message TykServerRequest {
+  string name = 1;
+  string description = 2;
+}
+
+// The response message from the server
+message TykServerResponse {
+  string name = 1;
+}
