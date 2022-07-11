@@ -29,7 +29,6 @@ func (g grpcAfterExtractionService) Execute(tykTaskConfigs []model.TykTaskConfig
 		glg.Log("Response from Grpc:", r.GetName())
 	}
 
-	//panic("implement me")
 }
 
 func (g grpcAfterExtractionService) ExecuteAsync(tykTaskConfigs []model.TykTaskConfig, wg *sync.WaitGroup) {
