@@ -15,7 +15,7 @@ func GetDataBaseConnection(dialect string, username string, password string, dbN
 
 	conn, err := gorm.Open(dialect, dbUrl)
 	if err != nil {
-		fmt.Print(err)
+		glg.Error(err)
 	}
 	db := conn
 
