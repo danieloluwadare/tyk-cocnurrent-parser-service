@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbb982e6-851d-4818-b1d0-892f5742c3df" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/service/DatabaseAfterExtractionService_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/service/Initializer.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/service/Initializer.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +63,7 @@
     "WebServerToolWindowFactoryState": "false",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/home/daniel/Documents/danielgit/golang/tyk/tyk-cocnurrent-parser-service/server",
+    "last_opened_file_path": "/home/daniel/Documents/danielgit/golang/tyk/tyk-cocnurrent-parser-service/client/service",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -73,11 +72,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/service" />
       <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/repository" />
       <recent name="$PROJECT_DIR$/utils" />
-      <recent name="$PROJECT_DIR$/service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -87,16 +86,7 @@
       <recent name="$PROJECT_DIR$/service" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build github.com/danieloluwadare/tyk-cocnurrent-parser-service/client">
-    <configuration name="go build github.com/danieloluwadare/tyk-cocnurrent-parser-service/client" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="tyk-cocnurrent-parser-service" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="github.com/danieloluwadare/tyk-cocnurrent-parser-service/client" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/client/main.go" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Go Test.TestService_CreateUser in github.com/danieloluwadare/tyk-cocnurrent-parser-service/client/service">
     <configuration name="go build github.com/danieloluwadare/tyk-cocnurrent-parser-service/server" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="tyk-cocnurrent-parser-service" />
       <working_directory value="$PROJECT_DIR$" />
@@ -104,6 +94,18 @@
       <package value="github.com/danieloluwadare/tyk-cocnurrent-parser-service/server" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/server/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestService_CreateUser in github.com/danieloluwadare/tyk-cocnurrent-parser-service/client/service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="tyk-cocnurrent-parser-service" />
+      <working_directory value="$PROJECT_DIR$/client/service" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/danieloluwadare/tyk-cocnurrent-parser-service/client/service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestService_CreateUser\E$" />
       <method v="2" />
     </configuration>
     <configuration name="clean (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
@@ -126,11 +128,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestService_CreateUser in github.com/danieloluwadare/tyk-cocnurrent-parser-service/client/service" />
         <item itemvalue="Makefile Target.create (2)" />
         <item itemvalue="Makefile Target.create (1)" />
         <item itemvalue="Makefile Target.clean (1)" />
         <item itemvalue="Go Build.go build github.com/danieloluwadare/tyk-cocnurrent-parser-service/server" />
-        <item itemvalue="Go Build.go build github.com/danieloluwadare/tyk-cocnurrent-parser-service/client" />
       </list>
     </recent_temporary>
   </component>
